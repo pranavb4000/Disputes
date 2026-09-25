@@ -1,0 +1,54 @@
+name: dms_web
+description: Dispute Management System - Flutter Web client (IDFC FIRST Bank)
+publish_to: none
+version: 0.1.0+1
+
+# Version ranges are deliberately wide so `flutter pub get` picks the newest versions that work
+# with whatever Flutter SDK is mirrored in the bank's Artifactory. Upper bounds keep us on
+# releases that still use `package:flutter/material.dart` (see README > Flutter 3.47+).
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+  flutter: ">=3.27.0"   # minimum tested API level (Color.withValues, ColorScheme without background)
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ">=2.5.1 <4.0.0"   # state management (the only approved pattern)
+  go_router: ">=14.0.0 <18.0.0"        # routing + auth redirects
+  dio: ^5.7.0                          # HTTP client (JWT + refresh interceptors)
+  intl: ">=0.19.0 <0.21.0"             # INR / IST formatting
+  data_table_2: ">=2.5.15 <3.0.0"      # data grids (server-side paging from Phase 1a)
+  fl_chart: ">=0.69.0 <2.0.0"          # dashboard charts
+  file_picker: ">=8.0.0 <14.0.0"       # Excel upload screen (Phase 1a); declared now to verify Artifactory
+  web: ">=1.0.0 <2.0.0"                # browser APIs (downloads) on web
+  json_annotation: ^4.9.0              # JSON model annotations
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  flutter_lints: ">=4.0.0 <7.0.0"
+  mocktail: ^1.0.4
+  build_runner: ^2.4.13
+  json_serializable: ^6.8.0
+
+flutter:
+  uses-material-design: true
+  # assets:
+  #   - assets/images/      # add the official logo here (see README > Branding)
+  fonts:
+    # Stand-in for Helvetica (IDFC digital typeface) until licensed web font files are supplied.
+    - family: BrandSans
+      fonts:
+        - asset: assets/fonts/LiberationSans-Regular.ttf
+        - asset: assets/fonts/LiberationSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/LiberationSans-Italic.ttf
+          style: italic
+    # Glyphs missing from BrandSans (e.g. the ₹ sign). Bundled so nothing is fetched from Google CDNs.
+    - family: SymbolFallback
+      fonts:
+        - asset: assets/fonts/DejaVuSans-Symbols.ttf

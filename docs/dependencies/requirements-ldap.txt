@@ -1,0 +1,6 @@
+# Resolved for Python 3.12 (linux x86_64) on 2026-09-24. Pinned full list incl. transitive packages.
+# Check availability (works from Windows too):
+#   pip download -r requirements-ldap.txt --no-deps --only-binary=:all: --python-version 3.12 --platform manylinux_2_28_x86_64 --platform manylinux2014_x86_64 -d chk --index-url https://<artifactory-host>/artifactory/api/pypi/<pypi-repo>/simple
+# Any package pip cannot find is missing from Artifactory.
+ldap3==2.9.1
+pyasn1==0.6.4

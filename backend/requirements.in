@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+pydantic-settings
+email-validator
+sqlalchemy
+oracledb
+alembic
+redis
+pyjwt
+cryptography
+python-multipart
+openpyxl
+boto3
+httpx2
